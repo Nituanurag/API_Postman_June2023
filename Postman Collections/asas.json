@@ -1,0 +1,2174 @@
+{
+	"info": {
+		"_postman_id": "da4cc9c9-91b0-44e3-b05f-7bd4e8eb567a",
+		"name": "Team11_API Rebooters_Postman_Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Program",
+			"item": [
+				{
+					"name": "POST Program",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c16e6402-1490-495d-b38b-547ca6be57cd",
+								"exec": [
+									"pm.test(\"Verify status code 201\"), () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"}\r",
+									"\r",
+									"var response = pm.response.json();\r",
+									"pm.globals.set(\"programId\",response.programId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "f25ecb3d-60e0-46ba-8793-104e786d82b5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"programName\": \"Jun23-API Rebooters-SDET-110\",\r\n  \"programDescription\": \"API Postman Hackathon\",\r\n  \"programStatus\": \"active\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BaseUrl}}/saveprogram"
+					},
+					"response": []
+				},
+				{
+					"name": "GET all Programs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3390f7c6-1d04-466c-9ecb-e18ad9cdf0eb",
+								"exec": [
+									"pm.test(\"Verify status code 200\"), () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}\r",
+									"const response = pm.response.json;\r",
+									"\r",
+									"// pm.test(\"Successful POST request\", function () {\r",
+									"//   pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"// });\r",
+									"// pm.test(\"Program Batch already exist\",() => {\r",
+									"//    pm.response.to.have.status(400);\r",
+									"// });\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "3c1b0462-1c73-43a0-ba85-893ba1073543",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BaseUrl}}{{allprg}}"
+					},
+					"response": []
+				},
+				{
+					"name": "GET one ProgramId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2509610a-94c7-48b5-96a1-ee044273b749",
+								"exec": [
+									"\r",
+									"pm.test(\"Validate Status Code\"), () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}\r",
+									"\r",
+									"// if(pm.test(\"program id  not found\"), () => {\r",
+									"//     pm.response.to.have.status(404);\r",
+									"// });\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "9c7cf60e-5539-421c-824a-fa28b9d99aba",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": "{{BaseUrl}}/programs/717"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Program by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4114a74d-9eb6-42cb-957b-78218c62c220",
+								"exec": [
+									"pm.test(\"Validate Status Code\"), () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}\r",
+									"\r",
+									"// pm.test(\"Invalid ProgramId\"), () => {\r",
+									"//     pm.response.to.have.status(404);\r",
+									"// }\r",
+									"\r",
+									"// pm.test(\"Missing field\"), () => {\r",
+									"//     pm.response.to.have.status(400);\r",
+									"// }\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "4cf9ebee-5feb-49fd-8c82-9f27d0343730",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n  \"programName\": \"June23-API Rebooters-SDET075\",\r\n   \"programStatus\": \"Active\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/putprogram/:programId",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"putprogram",
+								":programId"
+							],
+							"variable": [
+								{
+									"key": "programId",
+									"value": "{{programId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete By ProgramID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6211e670-2acd-4ea1-b3c4-397894c429c4",
+								"exec": [
+									"pm.test(\"Program Id- is deleted Successfully!)\"), () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "8c029bff-561a-4042-a6f0-fa8afb1d1b06",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/deletebyprogid/:programId",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"deletebyprogid",
+								":programId"
+							],
+							"variable": [
+								{
+									"key": "programId",
+									"value": "{{programId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Program Data Driven",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c16e6402-1490-495d-b38b-547ca6be57cd",
+								"exec": [
+									"pm.test(\"Verify status code 201\"), () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"}\r",
+									"\r",
+									"\r",
+									"var response = pm.response.json();\r",
+									"pm.globals.set(\"programname\",response.programName);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "640242da-0cf8-4540-9506-4bd41a9f348b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"programName\": \"{{programName}}\",\r\n  \"programDescription\": \"{{programDescription}}\",\r\n  \"programStatus\": \"{{programStatus}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BaseUrl}}{{endpoint}}"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProgrambyName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fb2edf3c-ac11-4ed2-bdde-023df01e5774",
+								"exec": [
+									"pm.test(\"Validate Status Code\"), () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}\r",
+									"\r",
+									"var response = pm.response.json();\r",
+									"pm.globals.set(\"programname\",response.programName);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "65417517-fc62-47b3-8c49-8bd791052f99",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"programName\": \"Jun23-API Rebooters-SDET-111\",\r\n  \"programDescription\": \"API Postman testing\",\r\n  \"programStatus\": \"active\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/program/:programName",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"program",
+								":programName"
+							],
+							"variable": [
+								{
+									"key": "programName",
+									"value": "{{programname}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete By ProgramName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5b2b49da-3ce8-4660-9278-8753472e506f",
+								"exec": [
+									"pm.test(\"Program Id- is deleted Successfully!)\"), () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    \r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "dd161f81-1b9c-4140-b3c1-73b284da7c5b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/deletebyprogname/:programname",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"deletebyprogname",
+								":programname"
+							],
+							"variable": [
+								{
+									"key": "programname",
+									"value": "{{programname}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "4e6e6373-b2ce-4a86-8aa9-13c22c30df00"
+		},
+		{
+			"name": "Batch",
+			"item": [
+				{
+					"name": "CreateBatch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "67105943-f6b3-4dc1-a6bc-8ad0df6679d9",
+								"exec": [
+									"\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"var response = pm.response.json();\r",
+									"pm.globals.set(\"batchId\",response.batchId);\r",
+									"pm.globals.set(\"batchName\",response.batchName);\r",
+									"\r",
+									"pm.test(\"Content-Type header is present\", ()=> {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type header is application/json\", ()=> {\r",
+									" pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql('application/json');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const datatype = pm.response.json();\r",
+									"pm.test(\"Test data type of the response\", () => {\r",
+									"pm.expect(datatype).to.be.a(\"object\");\r",
+									"pm.expect(datatype.batchId).to.be.a(\"number\");\r",
+									"pm.expect(datatype.batchName).to.be.a(\"string\");\r",
+									"pm.expect(datatype.batchDescription).to.be.a(\"string\");\r",
+									"pm.expect(datatype.batchStatus).to.be.a(\"string\");\r",
+									"pm.expect(datatype.batchNoOfClasses).to.be.a(\"number\");\r",
+									"pm.expect(datatype.programId).to.be.a(\"number\");\r",
+									"pm.expect(datatype.programName).to.be.a(\"string\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Value of fields response\", () => {\r",
+									"pm.expect(datatype.batchName).to.eql(\"Team_R\");\r",
+									"pm.expect(datatype.batchDescription).to.eql(\"Software Learning\");\r",
+									"pm.expect(datatype.batchStatus).to.eql(\"Rocking\");\r",
+									"pm.expect(datatype.batchNoOfClasses).to.eql(2);\r",
+									"pm.expect(datatype.programId).to.eql(3);\r",
+									"\r",
+									"});\r",
+									"console.log(datatype.status);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "90e06af8-2b3e-4cac-a2e4-34f6387b4266",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"batchDescription\": \"Software Learning\",\r\n  \"batchName\": \"Team_R\",\r\n  \"batchNoOfClasses\":2,\r\n  \"batchStatus\": \"Rocking\",\r\n  \"programId\":3\r\n }\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BaseUrl}}/batches"
+					},
+					"response": []
+				},
+				{
+					"name": "GET Batches – ALL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code is OK\", ()=> {\r",
+									"    pm.response.to.have.status(\"OK\")\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"id": "3d433401-4d3d-4056-b10a-4035e3b4bde9"
+							}
+						}
+					],
+					"_postman_id": "b24d9960-f5e1-415c-acc0-2b6b2fcbd50e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BaseUrl}}/batches"
+					},
+					"response": []
+				},
+				{
+					"name": "GET Batch by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",()=> {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"id": "1ff98388-4997-4fbb-befe-3240e3bed4b3"
+							}
+						}
+					],
+					"_postman_id": "66da4c69-7825-4d0f-b671-68d70928d53d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/batches/batchId/:batchId",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"batches",
+								"batchId",
+								":batchId"
+							],
+							"variable": [
+								{
+									"id": "c4a8b9e4-4cf6-477e-bdd1-efff4f08504f",
+									"key": "batchId",
+									"value": "{{batchId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Batch by Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ddb45adf-b168-4a14-b9f1-e697b5bc602e",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var response = pm.response.json();\r",
+									"pm.globals.set(\"programName\",response.programName);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "17e7f160-c90b-4ed7-9089-e077a520a1df",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/batches/batchName/:batchName",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"batches",
+								"batchName",
+								":batchName"
+							],
+							"variable": [
+								{
+									"key": "batchName",
+									"value": "{{batchName}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Batch by  ProgramId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "244582b2-55c1-4a2d-bf11-5edb61d10d06",
+								"exec": [
+									"pm.test(\"Status code is 200\",() => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "b44aba56-50cb-4cbc-910a-12e466c84ba1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/batches/program/:programId",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"batches",
+								"program",
+								":programId"
+							],
+							"variable": [
+								{
+									"key": "programId",
+									"value": "3",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Batch-Update Batch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var response = pm.response.json();\r",
+									"pm.globals.set(\"batchId\",response.batchId);"
+								],
+								"type": "text/javascript",
+								"id": "ae34590c-550e-48ae-848f-87cdcebe667c"
+							}
+						}
+					],
+					"_postman_id": "a09e4540-6743-4d15-8623-eec2306e1078",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"batchId\": 1590,\r\n        \"batchName\": \"QA!\",\r\n        \"batchDescription\": \"string\",\r\n        \"batchStatus\": \"string\",\r\n        \"batchNoOfClasses\": 2,\r\n        \"programId\": 1,\r\n        \"programName\": \"API Testing\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/batches/:batchId",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"batches",
+								":batchId"
+							],
+							"variable": [
+								{
+									"id": "d35e4d6b-a7ee-41b5-befe-012aed1cac36",
+									"key": "batchId",
+									"value": "{{batchId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Batch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7afa211d-ba76-49cd-b093-c811bb213b42",
+								"exec": [
+									"pm.test(\"Status code is 200\", ()=> {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "58f2d814-a532-4283-bf6e-e897aecb2b14",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/batches/:id",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"batches",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "bc0e55c1-da56-4ab8-bcde-2fe3df808b40",
+									"key": "id",
+									"value": "{{batchId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "1cd8a102-7ef1-4274-8f78-03fe9e03cfd0"
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "All Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c55bf88c-0d70-4832-a08c-9fa6911cee05",
+								"exec": [
+									"pm.test(\"Verify status code 200\"), () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "e61058e1-15b1-4a6b-b059-15c560cd91ff",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BaseUrl}}/users/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User info by Id success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a99e8ce-ca59-4a76-b43a-1ca6a739eedb",
+								"exec": [
+									"pm.test(\"Verify status code 200\"), () => {",
+									"    pm.response.to.have.status(200);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "58f98baa-9193-42e9-bc0a-4c397a13b0cf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/users/users",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"users",
+								"users"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users with roles ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "501d8f1d-6e6f-4dc8-b050-d7e312e4eca3",
+								"exec": [
+									"pm.test(\"Verify status code 200\"), () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "653f1c53-c88d-424a-b4e1-ec4a8d16534d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {}
+						},
+						"url": "{{BaseUrl}}/users/users/roles"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Staff  ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c36fa7c5-9cc0-4c84-bf3a-cc647af7e9f4",
+								"exec": [
+									"pm.test(\"Verify status code 200\"), () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "0df7e1ef-8c97-49ec-922b-0bdd27bfdff4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BaseUrl}}/users/users/getAllStaff"
+					},
+					"response": []
+				},
+				{
+					"name": "POST Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "932314c0-5be3-42fc-ae34-49d9693b2b27",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"var response = pm.response.json();\r",
+									"pm.globals.set(\"userId\",response.userId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "239f123e-90d3-437a-b8cf-73011eafc3d2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"userComments\": \"ROLE_ADMIN\",\r\n\"userEduPg\": \"MBA\",\r\n\"userEduUg\": \"BE\",\r\n\"userFirstName\": \"Team_11\",\r\n\"userLastName\": \"kiki\",\r\n\"userLinkedinUrl\": \"WWW.linkedin.com\",\r\n\"userLocation\": \"USA\",\r\n\"userMiddleName\": \"M\",\r\n\"userPhoneNumber\": 2150685591,\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"R01\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": \"CST\",\r\n\"userVisaStatus\": \"H4-EAD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BaseUrl}}/users/users/roleStatus"
+					},
+					"response": []
+				},
+				{
+					"name": "1.Update User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "07c88fdd-5146-4e5d-9b78-798f3c1abcf4",
+								"exec": [
+									"pm.test(\"Verify status code 200\"), () => {",
+									"    pm.response.to.have.status(200);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "f7310c15-3c35-4406-b32a-32117a20e4c6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"U1780\",\r\n    \"userFirstName\": \"fTymikia\",\r\n    \"userLastName\": \"Moo\",\r\n    \"userMiddleName\": \"string\",\r\n    \"userPhoneNumber\": 7104700101,\r\n    \"userLocation\": \"string\",\r\n    \"userTimeZone\": \"EST\",\r\n    \"userLinkedinUrl\": \"string\",\r\n    \"userEduUg\": \"string\",\r\n    \"userEduPg\": \"string\",\r\n    \"userComments\": \"string\",\r\n    \"userVisaStatus\": \"H4-EAD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/users/users/:userId",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"users",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"id": "33514f02-66da-4bac-a60e-f56994989517",
+									"key": "userId",
+									"value": "{{userId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.Role Program Batch Status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "96e8d50b-acf9-48ac-8de3-a634dfb46a35",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "93ecfe45-ef7a-4105-a95e-239fd5eff476",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"roleId\": \"R01\",\r\n  \"userRoleStatus\": \"ROLE_ADMIN\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/users/users/roleStatus/:userID",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"users",
+								"users",
+								"roleStatus",
+								":userID"
+							],
+							"query": [
+								{
+									"key": "userFirstName",
+									"value": "kokila",
+									"disabled": true
+								},
+								{
+									"key": "userIdro",
+									"value": "U96",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "roleId",
+									"value": "\"R03\"",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"id": "ac089f33-c7b7-49d1-9e06-592706b3c021",
+									"key": "userID",
+									"value": "{{userId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.Update User Role Status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56643eb1-23e3-468d-921d-7c93517c6dad",
+								"exec": [
+									"pm.test(\"Verify status code 201\"), () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "1bd40839-214c-46b6-931c-a158c7ea2648",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"programId\": 738,\r\n  \"roleId\": \"R01\",\r\n  \"userId\": \"U2820\",\r\n  \"userRoleProgramBatches\": [\r\n    {\r\n      \"batchId\": 1503,\r\n      \"userRoleProgramBatchStatus\": \"Active\"\r\n    }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/users/users/roleProgramBatchStatus/U2820",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"users",
+								"users",
+								"roleProgramBatchStatus",
+								"U2820"
+							],
+							"query": [
+								{
+									"key": "userFirstName",
+									"value": "kokila",
+									"disabled": true
+								},
+								{
+									"key": "userIdro",
+									"value": "U96",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "roleId",
+									"value": "\"R03\"",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "68b949cf-fcc2-453e-bb4b-6998f5b48810",
+							"name": "3.Update User Role Status-success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"programId\": 141,\r\n  \"roleId\": \"R01\",\r\n  \"userId\": \"U2820\",\r\n  \"userRoleProgramBatches\": [\r\n    {\r\n      \"batchId\": 2680,\r\n      \"userRoleProgramBatchStatus\": \"Active\"\r\n    }\r\n  ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseUrl}}/users/users/roleProgramBatchStatus/U2820",
+									"host": [
+										"{{BaseUrl}}"
+									],
+									"path": [
+										"users",
+										"users",
+										"roleProgramBatchStatus",
+										"U2820"
+									],
+									"query": [
+										{
+											"key": "userFirstName",
+											"value": "kokila",
+											"disabled": true
+										},
+										{
+											"key": "userIdro",
+											"value": "U96",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "roleId",
+											"value": "\"R03\"",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Jun 2023 02:08:02 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "User U2820 has been successfully assigned to Program/Batch(es)"
+						}
+					]
+				},
+				{
+					"name": "delete Req",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "900f8a2e-1193-4782-b065-8f7b4dd262d1",
+								"exec": [
+									"pm.test(\"Verify status code 200\"), () => {",
+									"    pm.response.to.have.status(200);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "a9bf9739-1b65-44c4-901a-cac51194b47e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/users/users/:userID",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"users",
+								"users",
+								":userID"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"id": "b8cd42c5-bd72-498f-8bda-c3b9cbfe4b26",
+									"key": "userID",
+									"value": "{{userId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "761c8d4d-5267-4a7f-a371-68af0c3593de"
+		},
+		{
+			"name": "Assignment",
+			"item": [
+				{
+					"name": "postCreate Assignment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9716dcf6-d159-4637-953d-0b4648cd7e6c",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"var response = pm.response.json();\r",
+									"pm.globals.set(\"assignmentId\",response.assignmentId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "ac73cf32-0100-4fa1-a56b-40a82368ba45",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"assignmentDescription\": \"testng\",\r\n  \"assignmentId\":8888 ,\r\n  \"assignmentName\": \"Jun23-SDET11-java55078\",\r\n  \"batchId\": 10,\r\n  \"comments\": \"string\",\r\n  \"createdBy\": \"U22\",\r\n  \"dueDate\": \"2023-07-19T22:02:28.140Z\",\r\n  \"graderId\": \"U21\",\r\n  \"pathAttachment1\": \"string\",\r\n  \"pathAttachment2\": \"string\",\r\n  \"pathAttachment3\": \"string\",\r\n  \"pathAttachment4\": \"string\",\r\n  \"pathAttachment5\": \"string\" \r\n  }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BaseUrl}}{{createAssignment}}"
+					},
+					"response": []
+				},
+				{
+					"name": "getallassignment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8b5d4161-1be6-4e63-b923-c11c9f65f4ee",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "3f254f12-1c5e-4087-8546-5d97e80b211c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BaseUrl}}/assignments"
+					},
+					"response": []
+				},
+				{
+					"name": "getbyid pos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "49db6fc3-da31-4dd6-b58f-ea85a7f35ea5",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "6cd629d1-d959-4448-b068-538655d71bd0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/assignments/:assignmentId",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignments",
+								":assignmentId"
+							],
+							"variable": [
+								{
+									"id": "226e5bd8-769a-4248-a9ce-1230bf647948",
+									"key": "assignmentId",
+									"value": "{{assignmentId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getassignmentforbatch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a840e93c-af62-468c-9192-b0431bfc3c6a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "da00d8cb-d649-4f91-b877-60a6eec7e568",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/assignments/batch/:batchID",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignments",
+								"batch",
+								":batchID"
+							],
+							"variable": [
+								{
+									"id": "c9a01c64-472d-4d29-9b38-824a2550c0c1",
+									"key": "batchID",
+									"value": "10",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put assignment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d95b8c1b-584d-4945-8b4b-35837a1b4819",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "47560a50-ef01-403c-a119-8827f0920e27",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"assignmentDescription\": \"string\",\r\n  \"assignmentId\": 0,\r\n  \"assignmentName\": \"Jun23-API Rebooters-SDET-javascri--09\",\r\n  \"batchId\": 10,\r\n  \"comments\": \"string\",\r\n  \"createdBy\": \"U22\",\r\n  \"dueDate\": \"2023-06-19T22:02:28.140Z\",\r\n  \"graderId\": \"U19\",\r\n  \"pathAttachment1\": \"string\",\r\n  \"pathAttachment2\": \"string\",\r\n  \"pathAttachment3\": \"string\",\r\n  \"pathAttachment4\": \"string\",\r\n  \"pathAttachment5\": \"string\"   }\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/assignments/:assignmentID",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignments",
+								":assignmentID"
+							],
+							"variable": [
+								{
+									"id": "ea21989f-4471-4382-b88c-17e97cb5f6b2",
+									"key": "assignmentID",
+									"value": "{{assignmentId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "936cc855-f7e1-421b-9227-1ec30b558dbb",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "fa36e081-825d-4131-91d1-842ce7a28ebc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/assignments/:assignmentID",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignments",
+								":assignmentID"
+							],
+							"variable": [
+								{
+									"id": "259fe9fe-7063-413b-9d2c-4b9b33a2061b",
+									"key": "assignmentID",
+									"value": "{{assignmentId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "a0b90413-d319-462a-b397-39f4d55bc01c"
+		},
+		{
+			"name": "Assignment Submission",
+			"item": [
+				{
+					"name": "All Submission",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"id": "b57a5bb8-bfcd-4e2b-8e7c-7d6ac11052bd"
+							}
+						}
+					],
+					"_postman_id": "2d29fbfa-ba01-4334-83b3-cf33af56bbf9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {}
+						},
+						"url": "{{BaseUrl}}/assignmentsubmission"
+					},
+					"response": []
+				},
+				{
+					"name": "Grades by AssignmentID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83697ad0-b252-46ca-975b-69fbc1042abf",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "e77b1f5e-3da5-4bf0-87b3-ecb8414a0aa5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/assignmentsubmission/getGrades/:assignmentId",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignmentsubmission",
+								"getGrades",
+								":assignmentId"
+							],
+							"variable": [
+								{
+									"key": "assignmentId",
+									"value": "292",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Grades by StudentID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f24fcc30-c78a-4cca-8497-dd374046ef3e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "575134ac-6d27-463e-8cf5-53d2b6bceb13",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/assignmentsubmission/getGradesByStudentId/:studentID",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignmentsubmission",
+								"getGradesByStudentId",
+								":studentID"
+							],
+							"variable": [
+								{
+									"key": "studentID",
+									"value": "U3101",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Grades by BatchID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"id": "6a09de8f-2e10-4929-bde9-83a3ef97d75a"
+							}
+						}
+					],
+					"_postman_id": "ba28ab5d-86bc-4236-8e17-2191a2404b32",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/assignmentsubmission/grades/:batchID",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignmentsubmission",
+								"grades",
+								":batchID"
+							],
+							"variable": [
+								{
+									"id": "03cbb811-d618-4db5-a374-d8e8390de090",
+									"key": "batchID",
+									"value": "1",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submission by BatchID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "303f6804-1f3f-4d1b-b5f5-fb4d1bde70f2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "9d2a44ea-f04d-4403-b1c0-8e0ffa742ea7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/assignmentsubmission/studentbatch/:batchId",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignmentsubmission",
+								"studentbatch",
+								":batchId"
+							],
+							"variable": [
+								{
+									"key": "batchId",
+									"value": "1",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submission by UserID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2644ebfa-0d8b-4f90-8466-10e393878f93",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "63fb8ab0-45bf-4a37-b9bf-3c86b9131875",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/assignmentsubmission/student/:userId",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignmentsubmission",
+								"student",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "U3101",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Assignment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9716dcf6-d159-4637-953d-0b4648cd7e6c",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"var response = pm.response.json();\r",
+									"pm.globals.set(\"assignmentId\",response.assignmentId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "00ad5ae7-eb96-4178-b4d0-73cee2c51b51",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"assignmentDescription\": \"testng\",\r\n  \"assignmentId\":0 ,\r\n  \"assignmentName\": \"Jun23-SDET11-java11-011-011\",\r\n  \"batchId\": 10,\r\n  \"comments\": \"string\",\r\n  \"createdBy\": \"U22\",\r\n  \"dueDate\": \"2023-07-19T22:02:28.140Z\",\r\n  \"graderId\": \"U21\",\r\n  \"pathAttachment1\": \"string\",\r\n  \"pathAttachment2\": \"string\",\r\n  \"pathAttachment3\": \"string\",\r\n  \"pathAttachment4\": \"string\",\r\n  \"pathAttachment5\": \"string\" \r\n  }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BaseUrl}}/assignments"
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Assignment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f5d151b0-2ea8-466f-9b8c-04678240c429",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var response = pm.response.json();",
+									"pm.globals.set(\"submissionId\",response.submissionId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "acaab759-17f0-4b40-8098-56ccdce4ddac",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {        \n        \"assignmentId\":{{assignmentId}},\n        \"userId\": \"U3101\",\n        \"subDesc\": \"Submissions for API11 Test\",\n        \"subComments\": \"API11\",\n        \"subPathAttach1\": \"Filepath1\",\n        \"subPathAttach2\": \"Filepath2\",\n        \"subPathAttach3\": \"Filepath3\",\n        \"subPathAttach4\": \"Filepath4\",\n        \"subPathAttach5\": \"filepath5\",\n        \"subDateTime\": \"06-25-2023 01:14:46\",\n        \"gradedBy\": null,\n        \"gradedDateTime\": null,\n        \"grade\": -1\n    }\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BaseUrl}}/assignmentsubmission"
+					},
+					"response": []
+				},
+				{
+					"name": "Resubmit Assignment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4432c1e7-a910-474d-93ab-938b7de868ff",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "7ec0dc45-3a90-4221-9269-723bab7f57dd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {        \n        \"assignmentId\": 1282,\n        \"userId\": \"U3101\",\n        \"subDesc\": \"ReSubmission for API11 Test\",\n        \"subComments\": \"API11\",\n        \"subPathAttach1\": \"Filepath6\",\n        \"subPathAttach2\": \"Filepath2\",\n        \"subPathAttach3\": \"Filepath3\",\n        \"subPathAttach4\": \"Filepath4\",\n        \"subPathAttach5\": \"filepath5\",\n        \"subDateTime\": \"06-26-2023 01:49:31\",\n        \"gradedBy\": null,\n        \"gradedDateTime\": null,\n        \"grade\": null\n    }\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/assignmentsubmission/:Id",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignmentsubmission",
+								":Id"
+							],
+							"variable": [
+								{
+									"key": "Id",
+									"value": "438",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Grade Assignment Submission",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aad62c9f-2169-4213-8340-2b46c2f391e9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "28f79cc2-239e-4093-a7b5-71e2a0e91d8f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "0b50f861-fbde-4392-99e0-f5d840aa6c48",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {        \n        \"assignmentId\": {{assignmentId}},\n        \"userId\": \"U3101\",\n        \"subDesc\": \"ReSubmission for API11 Test\",\n        \"subComments\": \"API11\",\n        \"subPathAttach1\": \"Filepath6\",\n        \"subPathAttach2\": \"Filepath2\",\n        \"subPathAttach3\": \"Filepath3\",\n        \"subPathAttach4\": \"Filepath4\",\n        \"subPathAttach5\": \"filepath5\",\n        \"subDateTime\": \"06-24-2023 01:14:46\",\n        \"gradedBy\": \"U22\",\n        \"gradedDateTime\": \"06-24-2023 17:15:13\",\n        \"grade\": 3\n    }\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/assignmentsubmission/gradesubmission/:submissionId",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignmentsubmission",
+								"gradesubmission",
+								":submissionId"
+							],
+							"variable": [
+								{
+									"id": "36f923f0-ea7c-4fb6-9c23-70a849b4d0a8",
+									"key": "submissionId",
+									"value": "{{submissionId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Submission",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1a667fa5-d562-4c8f-a9e3-9cc55e3d1f01",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "c8d4dd7c-1599-4ce6-969f-0d4a4d06474b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/assignmentsubmission/:Id",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignmentsubmission",
+								":Id"
+							],
+							"variable": [
+								{
+									"key": "Id",
+									"value": "{{submissionId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Assignment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "936cc855-f7e1-421b-9227-1ec30b558dbb",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "04f73237-2628-4d2e-9413-36a917665a02",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/assignments/:assignmentID",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"assignments",
+								":assignmentID"
+							],
+							"variable": [
+								{
+									"id": "259fe9fe-7063-413b-9d2c-4b9b33a2061b",
+									"key": "assignmentID",
+									"value": "{{assignmentId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "cdb59518-24fd-4a13-a121-2b1719143306"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e6e12fec-1ee5-4f88-aa31-e20a1c8b7e12",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6685d064-1ea4-46ac-ac11-9a64a48f5ffe",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "269f2510-aad3-468e-b21d-76275a492173",
+			"key": "endpoint",
+			"value": "/saveprogram",
+			"type": "string"
+		},
+		{
+			"id": "cfafa7e8-d545-43c4-a5de-49f6227a6497",
+			"key": "endpoints",
+			"value": "/saveprogram",
+			"type": "string"
+		},
+		{
+			"id": "94cbec0a-4f62-47e0-b5be-182166f40a2c",
+			"key": "allprg",
+			"value": "/allPrograms",
+			"type": "string"
+		},
+		{
+			"id": "59fd85c2-f81d-4810-8eea-981a0e18cb49",
+			"key": "updateById",
+			"value": "/putprogram/738",
+			"type": "string"
+		},
+		{
+			"id": "10386c4a-219b-4aef-8fd2-078be7fd5762",
+			"key": "delPrgById",
+			"value": "/deletebyprogid/:(programId)",
+			"type": "string"
+		}
+	]
+}
